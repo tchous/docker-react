@@ -6,4 +6,4 @@ before_install:
   - docker build -t tchous/docker-react -f Dockerfile.dev .
 
 scritp:
-  - docker run tchous/doccleker-react npm run test -- --coverage
+  - docker run -e CI=true tchous/docker-react npm run test
