@@ -8,4 +8,15 @@ before_install:
 scritp:
   - docker run -e CI=true tchous/docker-react npm run test
 
-
+deploy:
+    provider: elesticbeanstalk
+    region: "us-east-1"
+    app: "docker-react"
+    env: "Dockerreact-env"
+    bucket_name: "elasticbeanstalk-us-east-1-741928528423"
+    bucket_path: "docker-react"
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
